@@ -6,9 +6,13 @@ import Filter from '../Filter';
 import { GlobalStyle } from '../GlobalStyle';
 
 import Section from '../Section';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations.js';
+import { fetchContacts } from 'redux/contacts/operations.js';
 import ContactList from 'components/ContactList';
 
 function App() {
