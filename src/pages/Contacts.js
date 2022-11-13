@@ -1,11 +1,11 @@
-import { Box } from '../Box';
+import { Box } from 'components/Box';
 import { useDispatch, useSelector } from 'react-redux';
-import ContactForm from '../ContactForm';
-import Filter from '../Filter';
+import ContactForm from 'components/ContactForm';
+import Filter from 'components/Filter';
 
-import { GlobalStyle } from '../GlobalStyle';
+import { GlobalStyle } from 'components/GlobalStyle';
 
-import Section from '../Section';
+import Section from 'components/Section';
 import {
   selectContacts,
   selectError,

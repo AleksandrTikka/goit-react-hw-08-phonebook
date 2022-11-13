@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import { authOperations } from 'redux/auth/operations';
 // import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -8,6 +8,7 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    const { register } = authOperations;
     dispatch(
       register({
         name: form.elements.name.value,
