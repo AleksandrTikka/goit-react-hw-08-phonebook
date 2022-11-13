@@ -4,6 +4,7 @@ import { contactsReducer } from './contacts/contactsSlice';
 import { authReducer } from './auth/authSlice';
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,6 +12,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
+const authPersistConfig = {
+  key: 'auth',
+  // storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
