@@ -1,57 +1,53 @@
-import { Box } from '../Box';
-import { useDispatch, useSelector } from 'react-redux';
-import ContactForm from '../ContactForm';
-import Filter from '../Filter';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from '../Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
 
-import { GlobalStyle } from '../GlobalStyle';
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const TasksPage = lazy(() => import('../pages/Tasks'));
 
-import Section from '../Section';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from 'redux/contacts/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/contacts/operations.js';
-import ContactList from 'components/ContactList';
-
-function App() {
+export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
-  return (
-    <Box
-      textAlign="center"
-      bg="bgApp"
-      pt={4}
-      mx="auto"
-      mt="50px"
-      width="450px"
-      flexWrap="wrap"
-      justifyContent="center"
-      border="normal"
-      borderRadius="md"
-      borderColor="border"
-      as="main"
-    >
-      <Box as="h1" textAlign="center" color="heading" fontSize="l">
-        Phonebook
-      </Box>
-      <Section>{<ContactForm />}</Section>
-      <Section title="Contacts">
-        <Filter />
-        {isLoading && <p>Loading contacts...</p>}
-        {error && <p>{error}</p>}
-        {contacts.length > 0 && <ContactList />}
-      </Section>
 
-      <GlobalStyle />
-    </Box>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
-}
-export default App;
+};

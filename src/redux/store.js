@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import storage from 'redux-persist/lib/storage';
 import { contactsReducer } from './contacts/contactsSlice';
 import { authReducer } from './auth/authSlice';
 import {
@@ -15,7 +15,7 @@ import {
 
 const authPersistConfig = {
   key: 'auth',
-  // storage,
+  storage,
   whitelist: ['token'],
 };
 
