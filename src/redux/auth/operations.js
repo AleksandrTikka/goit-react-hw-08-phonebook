@@ -13,16 +13,28 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+/*
+ * POST @ /users/signup
+ * body: { name, email, password }
+ */
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
+    // After successful registration, add the token to the HTTP header
+    setAuthHeader(data.token);
     return data;
   } catch (error) {}
 });
 
+/*
+ * POST @ /users/login
+ * body: { email, password }
+ */
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
+    // After successful login, add the token to the HTTP header
+    setAuthHeader(data.token);
     return data;
   } catch (error) {}
 });
