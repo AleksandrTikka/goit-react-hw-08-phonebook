@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+// import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from 'hooks';
 
 /**
@@ -7,7 +8,16 @@ import { useAuth } from 'hooks';
  */
 
 export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isLoggedIn, isRefreshing } = useAuth();
-  const shouldRedirect = !isLoggedIn && !isRefreshing;
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  const { isLoggedIn } = useAuth();
+  // const shouldRedirect = !isLoggedIn && !isRefreshing;
+  // return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  return isLoggedIn ? Component : <Navigate to={redirectTo} />;
 };
+// export default function PrivateRoute({ children, ...routeProps }) {
+//   const { isLoggedIn } = useAuth();
+//   return (
+//     <Route {...routeProps}>
+//       {isLoggedIn ? children : <Redirect to="/login"></Redirect>}
+//     </Route>
+//   );
+// }
