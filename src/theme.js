@@ -13,6 +13,7 @@ export const theme = createTheme({
     bgButtonDelete: '#ff0000',
     bgButtonHover: '#7FFF00',
     border: '#B0C4DE',
+    white: '#FFFFFF',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
