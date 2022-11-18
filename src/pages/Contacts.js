@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 
-import { GlobalStyle } from 'components/GlobalStyle';
-
 import Section from 'components/Section';
 import {
   selectContacts,
@@ -49,8 +47,6 @@ export default function Contacts() {
         {error && <p>{error}</p>}
         {contacts.length > 0 && <ContactList />}
       </Section>
-
-      <GlobalStyle />
     </Box>
   );
 }

@@ -1,17 +1,23 @@
-export const theme = {
+import { createTheme } from '@mui/material/styles';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+export const theme = createTheme({
   colors: {
     text: 'black',
     accent: 'green',
     heading: '#cd5700',
     bgApp: '#79F8F8',
-    bgButton: '#50C878',
+    bgButtonAdd: '#50C878',
+    bgButtonDelete: '#ff0000',
     bgButtonHover: '#7FFF00',
     border: '#B0C4DE',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
+    body: 'roboto, sans-serif',
+    heading: 'roboto, sans-serif',
     monospace: 'Menlo, monospace',
   },
   fontSizes: {
@@ -42,4 +48,4 @@ export const theme = {
     lg: '16px',
     round: '50%',
   },
-};
+});

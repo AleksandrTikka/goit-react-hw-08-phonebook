@@ -5,7 +5,6 @@ export const Btn = styled.button`
   min-width: 150px;
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.sm};
-  background-color: ${p => p.theme.colors.bgButton};
 
   :hover,
   :focus {
