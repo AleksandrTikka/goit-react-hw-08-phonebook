@@ -29,7 +29,7 @@ export default function Contacts() {
       pt={4}
       mx="auto"
       mt="50px"
-      width="450px"
+      width="350px"
       flexWrap="wrap"
       justifyContent="center"
       border="normal"

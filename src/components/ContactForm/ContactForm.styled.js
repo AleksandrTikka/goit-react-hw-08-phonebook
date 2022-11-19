@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  text-align: left;
   font-size: ${p => p.theme.fontSizes.l};
   font-weight: ${p => p.theme.fontWeights.bold};
 

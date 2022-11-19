@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
-
+import { Puff } from 'react-loader-spinner';
 import { addContact } from 'redux/contacts/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Label, Error } from './ContactForm.styled';
-import { Btn } from 'components/App/App.styled';
+// import { Btn } from 'components/App/App.styled';
 import { Box } from '../Box';
-
+import IconButton from '@mui/material/IconButton';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { selectIsLoading } from 'redux/contacts/selectors';
 const Input = styled(Field)`
   width: 100%;
   border: ${p => p.theme.borders.none};
@@ -21,9 +23,9 @@ const Input = styled(Field)`
 `;
 
 const errorName =
-  "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
+  "Name is required and it may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
 const errorNumber =
-  'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +';
+  'Phone number is required and it must be digits and can contain spaces, dashes, parentheses and can start with +';
 const regularName =
   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 // const regularNumber =
@@ -52,6 +54,7 @@ const initialValues = {
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
   const handleFormSubmit = values => {
     const compareContact = contacts.find(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
@@ -78,6 +81,7 @@ const ContactForm = () => {
             <Input
               type="text"
               name="name"
+              placeholder="enter name"
               // value={this.state.name}
               // onChange={this.handleInputChange}
               // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -94,6 +98,7 @@ const ContactForm = () => {
             <Input
               type="tel"
               name="number"
+              placeholder="enter number"
               // value={this.state.number}
               // onChange={this.handleInputChange}
               // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -106,9 +111,24 @@ const ContactForm = () => {
             />
           </Label>
         </Box>
-        <Btn type="submit" name="addContact">
-          Add contact
-        </Btn>
+        <Box display="flex" justifyContent="center">
+          {isLoading ? (
+            <Puff
+              height="30"
+              width="30"
+              radisu={1}
+              color="#4fa94d"
+              ariaLabel="puff-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          ) : (
+            <IconButton color="success" type="submit" name="addContact">
+              <AddCircleIcon />
+            </IconButton>
+          )}
+        </Box>
       </Form>
     </Formik>
   );
