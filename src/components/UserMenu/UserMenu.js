@@ -4,7 +4,6 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from 'hooks';
 import { UserBox, Greetings, Name } from './UserMenu.styled';
 import IconButton from '@mui/material/IconButton';
-// import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,3 @@
-// import { useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { StyledLink } from './Home/Home.styled';
 import { Container } from '@mui/material';

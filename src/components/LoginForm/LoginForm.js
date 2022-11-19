@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/operations';
 import { Form, Redirect } from 'components/RegisterForm/RegisterForm.styled';
 import { TextField, Button, Box } from '@mui/material';
-// import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

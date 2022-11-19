@@ -5,7 +5,7 @@ export const UserBox = styled.div`
   color: ${p => p.theme.colors.nav};
 `;
 export const Greetings = styled.p`
-  margin-right: ${p => p.theme.space[4]}px;
+  margin-right: ${p => p.theme.space[3]}px;
 `;
 export const Name = styled.span`
   font-weight: ${p => p.theme.fontWeights.bold};
