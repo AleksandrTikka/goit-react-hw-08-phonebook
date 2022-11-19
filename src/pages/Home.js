@@ -19,7 +19,7 @@ export default function Home() {
         <Box as="h1" fontWeight="500px" fontSize="48" textAlign="center">
           Dear Guest, welcome to Phonebook! If you want to proceed, please
           <StyledLink to="/register"> Register </StyledLink>
-          or <StyledLink to="/contacts"> Log In</StyledLink>!
+          or <StyledLink to="/login"> Log In</StyledLink>!
         </Box>
       ) : (
         <Box as="h1" fontWeight="500px" fontSize="48" textAlign="center">

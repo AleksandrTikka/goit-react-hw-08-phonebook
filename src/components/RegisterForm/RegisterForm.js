@@ -4,7 +4,7 @@ import { Form } from './RegisterForm.styled';
 import { Button } from '@mui/material';
 import { TextField, Box } from '@mui/material';
 
-// import css from './RegisterForm.module.css';
+import { Redirect } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const RegisterForm = () => {
         <TextField
           fullWidth
           autoFocus
-          autoComplete="name"
+          autoComplete="given-name"
           placeholder="enter name"
           color="success"
           label="Name"
@@ -63,6 +63,9 @@ export const RegisterForm = () => {
         >
           Register
         </Button>
+        <Redirect to="/login" underlineHover>
+          Do you have an account? Log in
+        </Redirect>
       </Form>
     </Box>
   );

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/operations';
-import { Form } from 'components/RegisterForm/RegisterForm.styled';
+import { Form, Redirect } from 'components/RegisterForm/RegisterForm.styled';
 import { TextField, Button, Box } from '@mui/material';
 // import css from './LoginForm.module.css';
 
@@ -25,6 +25,7 @@ export const LoginForm = () => {
       <Form onSubmit={handleSubmit} autoComplete="off">
         <TextField
           fullWidth
+          autoFocus
           autoComplete="email"
           placeholder="enter email"
           color="success"
@@ -51,6 +52,7 @@ export const LoginForm = () => {
         >
           Log In
         </Button>
+        <Redirect to="/register">Don't have an account? Sign up</Redirect>
       </Form>
     </Box>
   );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-export const StyledLink = styled(NavLink)`
+import { Link } from 'react-router-dom';
+export const StyledLink = styled(Link)`
   color: ${p => p.theme.colors.nav};
   font-weight: ${p => p.theme.fontWeights.bold};
   //   padding: ${p => p.theme.space[4]}px 0;

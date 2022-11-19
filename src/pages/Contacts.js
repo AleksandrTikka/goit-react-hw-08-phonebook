@@ -45,7 +45,12 @@ export default function Contacts() {
       <Section title="Contacts">
         <Filter />
         {isLoading && (
-          <Box display="flex" justifyContent="center">
+          <Box
+            display="flex"
+            justifyContent="center"
+            position="absolute"
+            top={3}
+          >
             <ThreeDots
               height="80"
               width="80"
