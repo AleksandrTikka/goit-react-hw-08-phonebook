@@ -37,9 +37,8 @@ const ContactItem = ({ name, number, id }) => {
         type="button"
         onClick={() => {
           setDeleting(true);
-          id => {
-            dispatch((deleteContact(id), { id }));
-          };
+
+          dispatch((deleteContact(id), { id }));
         }}
       >
         {deleting ? 'Deleting...' : 'Delete'}
