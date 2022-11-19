@@ -1,17 +1,22 @@
 // import { Btn } from '../App/App.styled';
 import { Item } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
+import { useState /*useEffect*/ } from 'react';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { theme } from 'theme';
 
-import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/contacts/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectIsLoading } from 'redux/contacts/selectors';
 const ContactItem = ({ name, number, id }) => {
+  const [deleting, setDeleting] = useState(false);
+  // const loading = useSelector(selectIsLoading);
+  // useEffect(() => {
+
+  // }, [loading]);
   const dispatch = useDispatch();
-  const loading = useSelector(selectIsLoading);
 
   const DeleteBtn = styled(Button)(() => ({
     color: theme.colors.white,
@@ -29,11 +34,15 @@ const ContactItem = ({ name, number, id }) => {
     <Item>
       {name}: {number}
       <DeleteBtn
-        // "
         type="button"
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => {
+          setDeleting(true);
+          id => {
+            dispatch((deleteContact(id), { id }));
+          };
+        }}
       >
-        {loading ? 'Deleting...' : 'Delete'}
+        {deleting ? 'Deleting...' : 'Delete'}
       </DeleteBtn>
     </Item>
   );
