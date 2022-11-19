@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/operations';
+import { Form } from 'components/RegisterForm/RegisterForm.styled';
+import { TextField, Button, Box } from '@mui/material';
 // import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
@@ -19,16 +21,28 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <TextField
+          placeholder="enter email"
+          color="success"
+          label="Email"
+          type="email"
+          name="email"
+        />
+
+        <TextField
+          placeholder="enter password"
+          color="success"
+          label="Password"
+          type="password"
+          name="password"
+        />
+
+        <Button variant="contained" size="small" color="success" type="submit">
+          Log In
+        </Button>
+      </Form>
+    </Box>
   );
 };

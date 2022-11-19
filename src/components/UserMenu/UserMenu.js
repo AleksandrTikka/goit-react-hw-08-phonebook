@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from 'hooks';
+import { UserBox, Greetings, Name } from './UserMenu.styled';
+import IconButton from '@mui/material/IconButton';
 // import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
@@ -9,11 +11,17 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <div>
-      <p>Welcome, {user}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
-        Logout <LogoutIcon sx={{ fontSize: 15 }} />
-      </button>
-    </div>
+    <UserBox>
+      <Greetings>
+        Welcome, <Name>{user}</Name>!
+      </Greetings>
+      <IconButton
+        color="warning"
+        type="button"
+        onClick={() => dispatch(logOut())}
+      >
+        <LogoutIcon sx={{ fontSize: 25 }} />
+      </IconButton>
+    </UserBox>
   );
 };

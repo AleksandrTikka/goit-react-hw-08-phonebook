@@ -8,7 +8,7 @@ export const theme = createTheme({
     text: 'black',
     accent: 'green',
     heading: '#cd5700',
-    bgApp: '#79F8F8',
+    bgApp: '#90EE90',
     bgButtonAdd: '#50C878',
     bgButtonDelete: '#ff0000',
     bgButtonHover: '#7FFF00',
@@ -35,6 +35,16 @@ export const theme = createTheme({
   lineHeights: {
     body: 1.5,
     heading: 1.125,
+  },
+  shadows: {
+    header: '0 5px 7px rgba(0, 0, 0, 0.4)',
+    cardHover:
+      '0 10px 20px rgba(0, 0, 0, 0.25), 0 7px 10px rgba(0, 0, 0, 0.15)',
+  },
+  transition: {
+    transform: 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+    boxShadow: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+    bgColor: 'color 300ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
   borders: {
     none: 'none',
