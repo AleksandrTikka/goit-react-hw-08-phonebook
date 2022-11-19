@@ -6,7 +6,8 @@ import '@fontsource/roboto/700.css';
 export const theme = createTheme({
   colors: {
     text: 'black',
-    accent: 'green',
+    nav: 'green',
+    hover: '#f51a8d',
     heading: '#cd5700',
     bgApp: '#90EE90',
     bgButtonAdd: '#50C878',

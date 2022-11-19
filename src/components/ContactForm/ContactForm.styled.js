@@ -8,7 +8,7 @@ export const Label = styled.label`
   font-size: ${p => p.theme.fontSizes.l};
   font-weight: ${p => p.theme.fontWeights.bold};
 
-  color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.nav};
 
   :not(:last-child) {
     margin-bottom: ${p => p.theme.space[3]}px;

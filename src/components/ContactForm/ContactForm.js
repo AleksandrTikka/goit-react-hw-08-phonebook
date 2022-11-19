@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
-import { Puff } from 'react-loader-spinner';
+
 import { addContact } from 'redux/contacts/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Label, Error } from './ContactForm.styled';
-// import { Btn } from 'components/App/App.styled';
+
 import { Box } from '../Box';
 import IconButton from '@mui/material/IconButton';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { selectIsLoading } from 'redux/contacts/selectors';
+import toast from 'react-hot-toast';
+
 const Input = styled(Field)`
   width: 100%;
   border: ${p => p.theme.borders.none};
@@ -54,14 +55,14 @@ const initialValues = {
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
+
   const handleFormSubmit = values => {
     const compareContact = contacts.find(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
 
     compareContact
-      ? alert(`${values.name} is already in contacts`)
+      ? toast.error(`${values.name} is already in contacts`)
       : dispatch(addContact(values));
   };
 
@@ -112,22 +113,9 @@ const ContactForm = () => {
           </Label>
         </Box>
         <Box display="flex" justifyContent="center">
-          {isLoading ? (
-            <Puff
-              height="30"
-              width="30"
-              radisu={1}
-              color="#4fa94d"
-              ariaLabel="puff-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          ) : (
-            <IconButton color="success" type="submit" name="addContact">
-              <AddCircleIcon />
-            </IconButton>
-          )}
+          <IconButton color="success" type="submit" name="addContact">
+            <AddCircleIcon />
+          </IconButton>
         </Box>
       </Form>
     </Formik>

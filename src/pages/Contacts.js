@@ -2,6 +2,7 @@ import { Box } from 'components/Box';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
+import { ThreeDots } from 'react-loader-spinner';
 
 import Section from 'components/Section';
 import {
@@ -43,9 +44,26 @@ export default function Contacts() {
       <Section>{<ContactForm />}</Section>
       <Section title="Contacts">
         <Filter />
-        {isLoading && <p>Loading contacts...</p>}
+        {isLoading && (
+          <Box display="flex" justifyContent="center">
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </Box>
+        )}
         {error && <p>{error}</p>}
-        {contacts.length > 0 && <ContactList />}
+        {contacts.length > 0 ? (
+          <ContactList />
+        ) : (
+          <Box mb={4}>contacts not added yet...</Box>
+        )}
       </Section>
     </Box>
   );

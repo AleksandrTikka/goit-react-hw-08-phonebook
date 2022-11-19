@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-
-export const MainNavigation = styled.nav`
-  display: flex;
-  gap: ${p => p.theme.space[4]}px;
-`;
-
 export const StyledLink = styled(NavLink)`
   color: ${p => p.theme.colors.nav};
   font-weight: ${p => p.theme.fontWeights.bold};

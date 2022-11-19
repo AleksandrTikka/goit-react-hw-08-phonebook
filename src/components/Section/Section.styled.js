@@ -8,4 +8,5 @@ export const Paragraph = styled.div`
 export const Heading = styled.h2`
   margin-top: ${p => p.theme.space[4]}px;
   margin-bottom: ${p => p.theme.space[4]}px;
+  color: ${p => p.theme.colors.heading};
 `;

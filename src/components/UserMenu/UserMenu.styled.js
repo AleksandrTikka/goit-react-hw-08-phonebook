@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const UserBox = styled.div`
   display: flex;
   align-items: center;
-  color: ${p => p.theme.colors.heading};
+  color: ${p => p.theme.colors.nav};
 `;
 export const Greetings = styled.p`
   margin-right: ${p => p.theme.space[4]}px;

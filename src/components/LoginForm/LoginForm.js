@@ -24,6 +24,8 @@ export const LoginForm = () => {
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <TextField
+          fullWidth
+          autoComplete="email"
           placeholder="enter email"
           color="success"
           label="Email"
@@ -32,6 +34,7 @@ export const LoginForm = () => {
         />
 
         <TextField
+          fullWidth
           placeholder="enter password"
           color="success"
           label="Password"
@@ -39,7 +42,13 @@ export const LoginForm = () => {
           name="password"
         />
 
-        <Button variant="contained" size="small" color="success" type="submit">
+        <Button
+          fullWidth
+          variant="contained"
+          size="small"
+          color="success"
+          type="submit"
+        >
           Log In
         </Button>
       </Form>

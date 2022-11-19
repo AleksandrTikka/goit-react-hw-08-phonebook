@@ -5,7 +5,7 @@ export const Label = styled.label`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.nav};
   margin-bottom: ${p => p.theme.space[5]}px;
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};

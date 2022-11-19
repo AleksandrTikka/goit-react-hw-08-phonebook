@@ -27,6 +27,9 @@ export const RegisterForm = () => {
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <TextField
+          fullWidth
+          autoFocus
+          autoComplete="name"
           placeholder="enter name"
           color="success"
           label="Name"
@@ -34,6 +37,8 @@ export const RegisterForm = () => {
           name="name"
         />
         <TextField
+          autoComplete="email"
+          fullWidth
           placeholder="enter email"
           color="success"
           label="Email"
@@ -42,13 +47,20 @@ export const RegisterForm = () => {
         />
 
         <TextField
+          fullWidth
           placeholder="enter password"
           color="success"
           label="Password"
           type="password"
           name="password"
         />
-        <Button variant="contained" size="small" color="success" type="submit">
+        <Button
+          fullWidth
+          variant="contained"
+          size="small"
+          color="success"
+          type="submit"
+        >
           Register
         </Button>
       </Form>
